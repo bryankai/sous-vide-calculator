@@ -1,5 +1,5 @@
 html {
-  background-color: AntiqueWhite;
+  /* background-color: AntiqueWhite; */
 }
 
 .header-container {
@@ -70,11 +70,11 @@ html {
   color: #2F404E
 }
 
-.buttons-container-container {
+.buttons-container {
   /* background-color: yellow; */
 }
 
-.buttons-container {
+.buttons-sub-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -86,6 +86,7 @@ html {
   color: white;
   font-size: 20px;
   background-color: #2F404E;
+  cursor: pointer;
   height: 50px;
   width: 150px;
   border-style: solid;
@@ -97,6 +98,12 @@ html {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  transition: all .5s ease;
+}
+
+.button:hover {
+  background-color: black;
+  color: yellow;
 }
 
 @media (max-width:768px) {
@@ -104,6 +111,57 @@ html {
     width: 100%;
   }
 }
+
+.results-sub-container {
+  max-width: 300px;
+  margin: 30px auto;
+  min-height: 75px;
+  color: #2F404E;
+  border-color: #2F404E;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  /* background-color: green; */
+}
+
+.results-sub-container .row {
+  /* border-color: yellow;
+  border-style: solid;
+  border-width: 2px; */
+  display: flex;
+  display: wrap;
+  align-items: center;
+}
+
+.results-sub-container .results-title {
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: #2F404E;
+    border-radius: 10px 10px 0px 0px;
+    padding:20px;
+    margin:-1px;
+    /* border-bottom: 2px solid #2F404E; */
+
+}
+.results-title h2 {
+  margin:0;
+}
+
+.row .icon {
+  font-size: 3em;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.row .description {
+  flex-grow: 2;
+}
+
+.hide {
+  display: none;
+}
+
 
 /*****************/
 
@@ -131,7 +189,7 @@ h2 {
 
 h3 {
   font-family: "Open Sans";
-  font-size: 20px;
+  font-size: 24px;
   font-style: normal;
   font-variant: normal;
   font-weight: 500;
