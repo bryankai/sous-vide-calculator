@@ -3,15 +3,15 @@
 // console.log("I'm linked to the HTML file.")
 
 // // Data.js linked?
-// console.log(recipes.beef.steak.rare)
+console.log(recipes.beef.steak.rare)
 // var data = require('./data.js');
 
 
 //Initialize variables.
 const button = document.querySelectorAll('.buttons-sub-container>.button')
-const progBarStatus = document.querySelectorAll('.progress-bar>.progress')
+const progBarStatus = document.querySelectorAll('.progress-bar>.progress') // Prog Bar Icons
 const clearButton = document.querySelector('.clear-button')
-let progBarArr = []
+let selectionsArr = [] // Array of selections.
 
 
 //Event listeners
@@ -28,16 +28,16 @@ function render(event) {
 }
 
 function updateProgBar(event) {
-  progBarArr.push(event.target.innerHTML)
+  selectionsArr.push(event.target.innerHTML)
   for (let i = 0; i < progBarStatus.length; i++) {
-    if (progBarArr[i]) {
+    if (selectionsArr[i]) {
       progBarStatus[i].classList.add("complete")
     }
   }
 }
 
 function emptyProgBar() {
-  progBarArr = []
+  selectionsArr = []
   for (let i = 0; i < progBarStatus.length; i++) {
     progBarStatus[i].classList.remove("complete")
   }
@@ -45,5 +45,22 @@ function emptyProgBar() {
 
 // Buttons //
 function populateButtons() {
-  
+  // What level am I at?
+  if(selectionsArr.Length===1) {
+    // Meat
+
+  } else if (selectionsArr.Length===2) {
+    // Cut
+  } else if (selectionsArr.Length===3) {
+    // Doneness
+  }
+  for (let i = 0; i<selectionsArr.length; i++) {
+    button.innerHTML = []
+  }
+}
+
+function createButton() {
+  let button = document.createElement('a')
+  button.classList.add('button')
+
 }
