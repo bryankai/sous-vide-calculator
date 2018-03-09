@@ -48,6 +48,19 @@ html {
   margin: 0px 10px;
 }
 
+.clear-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.clear-button.button  {
+  max-width: 80px;
+  font-size: 20px;
+  height: 40px;
+}
+
+
 .progress-bar>.complete {
   background-color: #7EA4CD;
 }
@@ -68,10 +81,6 @@ html {
   padding: 0px 20px 0px 20px;
   margin: 10px;
   color: #2F404E
-}
-
-.buttons-container {
-  /* background-color: yellow; */
 }
 
 .buttons-sub-container {
