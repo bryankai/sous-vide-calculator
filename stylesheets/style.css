@@ -12,7 +12,7 @@ html {
 .header {
   color: white;
   border-color: white;
-    border-style: solid;
+  border-style: solid;
   border-width: 2px;
   border-radius: 10px;
   padding: 10px 30px;
@@ -35,9 +35,7 @@ html {
   padding: 20px 20px 0 20px;
 }
 
-.progress-bar>div {
-  color: white;
-  background-color: #7EA4CD;
+.progress {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,28 +43,32 @@ html {
   width: 50px;
   border-style: solid;
   border-radius: 50%;
-  border-width: 0px;
+  border-width: 2px;
+  border-color: #2F404E;
   margin: 0px 10px;
+}
+
+.progress-bar>.complete {
+  background-color: #7EA4CD;
 }
 
 .title-container {
   /* background-color: blue; */
-  display:flex;
+  display: flex;
   justify-content: center;
   padding: 10px 30px;
 }
 
 .title {
-  /* border-color: #F404E; */
-  /* border-style: solid;
+  /* border-color: #2F404E;
+  border-style: solid;
   border-width: 2px; */
-  border-bottom: 2px solid #F404E;
+  border-bottom: 2px solid #2F404E;
   /* border-radius: 10px; */
   padding: 0px 20px 0px 20px;
   margin: 10px;
   color: #2F404E
 }
-
 
 .buttons-container-container {
   /* background-color: yellow; */
@@ -82,12 +84,12 @@ html {
 
 .button {
   color: white;
-  font-size:20px;
+  font-size: 20px;
   background-color: #2F404E;
   height: 50px;
   width: 150px;
   border-style: solid;
-  border-radius: 15px;
+  border-radius: 10px;
   border-width: 0px;
   margin: 10px 20px;
   display: flex;
@@ -104,53 +106,61 @@ html {
 }
 
 /*****************/
+
 /*** Open Sans ***/
+
 /*****************/
+
 h1 {
-	font-family: "Open Sans";
-	font-size: 36px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 500;
-	line-height: 26.4px;
+  font-family: "Open Sans";
+  font-size: 36px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 26.4px;
 }
+
 h2 {
-	font-family: "Open Sans";
-	font-size: 28px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 500;
-	line-height: 26.4px;
+  font-family: "Open Sans";
+  font-size: 28px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 26.4px;
 }
+
 h3 {
-	font-family: "Open Sans";
-	font-size: 20px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 500;
-	line-height: 15.4px;
+  font-family: "Open Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 15.4px;
 }
-p,a{
-	font-family: "Open Sans";
-	font-size: 14px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 20px;
+
+p, a {
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
 }
+
 blockquote {
-	font-family: "Open Sans";
-	font-size: 21px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 30px;
+  font-family: "Open Sans";
+  font-size: 21px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 30px;
 }
+
 pre {
-	font-family: "Open Sans";
-	font-size: 13px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 18.5714px;
+  font-family: "Open Sans";
+  font-size: 13px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 18.5714px;
 }
