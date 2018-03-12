@@ -1,9 +1,7 @@
+@import url('https://use.fontawesome.com/releases/v5.0.8/css/all.css');
 html {
-  /* background-color: AntiqueWhite; */
+    font-family: "Open Sans";
 }
-
-@import url('http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
-
 
 .header-container {
   display: flex;
@@ -57,12 +55,11 @@ html {
   flex-wrap: wrap;
 }
 
-.clear-button.button  {
+.clear-button.button {
   max-width: 80px;
   font-size: 16px;
   max-height: 30px;
 }
-
 
 .progress-bar>.complete {
   background-color: #7EA4CD;
@@ -75,12 +72,8 @@ html {
   padding: 10px 30px;
 }
 
-.selection-title {
-  /* border-color: #2F404E;
-  border-style: solid;
-  border-width: 2px; */
+.selection-title, .favorites-title {
   border-bottom: 2px solid #2F404E;
-  /* border-radius: 10px; */
   padding: 0px 20px 0px 20px;
   margin: 10px;
   color: #2F404E
@@ -147,18 +140,18 @@ html {
 }
 
 .results-sub-container .results-title {
-    display: flex;
-    justify-content: center;
-    color: white;
-    background-color: #2F404E;
-    border-radius: 10px 10px 0px 0px;
-    padding:20px;
-    margin:-1px;
-    /* border-bottom: 2px solid #2F404E; */
-
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: #2F404E;
+  border-radius: 10px 10px 0px 0px;
+  padding: 20px;
+  margin: -1px;
+  /* border-bottom: 2px solid #2F404E; */
 }
+
 .results-title h2 {
-  margin:0;
+  margin: 0;
 }
 
 .row .icon {
@@ -175,51 +168,90 @@ html {
   display: none;
 }
 
-/* Favorite Button */
+/*************************/
+/**** Favorite Button ****/
+/*************************/
 
 .favorite.row {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .favorite-btn {
-  width: 160px;
-  height: 50px;
+  width: 120px;
+  height: 40px;
+  color: white;
   background-color: tomato;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 3px;
+  position: relative;
+  border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
-  color: #fff;
+  background-color: #FFB045;
 }
+
 .favorite-btn:after, .favorite-btn:before {
+  font-family: "Open Sans";
   content: 'Favorite';
+  font-size: 20px;
   position: absolute;
   left: 50%;
   top: 50%;
   transition: all 0.5s;
   transform: translate(-50%, -50%);
 }
+
 .favorite-btn:hover:after {
   top: -50%;
 }
+
 .favorite-btn:before {
-  font-family: 'Ionicons';
-  content: '\f141';
+  font-family: "FontAwesome";
+  content: "\f004";
   font-size: 40px;
   top: 190%;
 }
+
 .favorite-btn:hover:before {
   top: 50%;
 }
 
+/*************************/
+/*** Favorites Sectoin ***/
+/*************************/
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(odd) {
+  background-color: LightGray;
+}
+
+th {
+  background-color: #2F404E;
+  color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.favorites-section {
+  display: flex;
+  justify-content: center;
+}
+
+.favorites-container {
+  padding: 10px 30px;
+}
+
+
 /*****************/
-
 /*** Open Sans ***/
-
 /*****************/
 
 h1 {

@@ -14,7 +14,9 @@ const progBarStatus = document.querySelectorAll('.progress-bar>.progress') // Pr
 const clearButton = document.querySelector('.clear-button')
 const selectionCont = document.querySelector('.selection-container')
 const resultsCont = document.querySelector('.results-sub-container')
+const favesCont = document.querySelector('.favorites-container')
 let selectionsArr = [] // Array of selections.
+let potentialFav = []
 
 initialRender()
 
@@ -23,7 +25,7 @@ initialRender()
 function initialRender() {
   populateButtons()
   addButtonEventListeners()
-  console.log('initial render complete')
+  console.log('Initial render complete.')
 }
 
 function render(event) {
@@ -45,6 +47,8 @@ function clearRender() {
 // Event Listeners
 function addButtonEventListeners() {
   clearButton.addEventListener('click', clearRender)
+
+  document.querySelector('.favorite-btn').addEventListener('click',saveFavorite)
 
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', render)
@@ -73,8 +77,6 @@ function emptyProgBar() {
 function emptyButtons() {
   // Clers buttons array
   const length = buttons.length
-  console.log(buttonsContainer)
-  console.log('Buttons: ' + buttons);
   for (let i = 0; i < length; i++) {
     buttonsContainer.removeChild(buttonsContainer.firstElementChild)
   }
@@ -82,6 +84,7 @@ function emptyButtons() {
 
 function populateButtons() {
   let title
+  let recipeName
   const objMap = createObjMap()
   if (selectionsArr.length === 3) {
     // Inputting Display text
@@ -89,6 +92,7 @@ function populateButtons() {
     let time = objMap['time']
     document.querySelector('.temp > h3').innerHTML = temp + '°'
     document.querySelector('.time > h3').innerHTML = time
+    document.querySelector('.results-title > h2').innerHTML = recipeName
     // Hide/unhide containers
     displayResults()
   } else {
@@ -130,19 +134,21 @@ function populateButtons() {
       cut = selectionsArr[1]
       doneness = selectionsArr[2]
       result = recipes[meat][cut][doneness]
+      potentialFav = [meat,cut,doneness]
+      recipeName = cut+' // '+doneness
     }
     return result
   }
 }
 
+// Hide/Unhide HTML
 function displayResults() {
-  // Hide/Unhide HTML
   selectionCont.style.display = "none"
   resultsCont.style.display = "block"
 }
 
+// Hide/Unhide HTML
 function displayButtons() {
-  // Hide/Unhide HTML
   selectionCont.style.display = "block"
   resultsCont.style.display = "none"
 }
@@ -152,4 +158,17 @@ function createButton(string) {
   button.classList.add('button')
   button.innerHTML = string
   return button
+}
+
+//Favorite
+function saveFavorite () {
+  localStorage.setItem('myFavs', potentialFav);
+}
+
+function displayFavorites () {
+  let myFavs = localStorage.getItem("myFavs")
+  if (myFavs) {
+
+      favesCont.style.display = "block"
+  }
 }
