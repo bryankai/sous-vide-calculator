@@ -3,30 +3,56 @@
 // console.log("I'm linked to the HTML file.")
 
 // // Data.js linked?
-console.log(recipes.beef.steak.rare)
+// console.log(recipes.beef.steak.rare)
 // var data = require('./data.js');
 
 
 //Initialize variables.
-const button = document.querySelectorAll('.buttons-sub-container>.button')
+const buttonsContainer = document.querySelector('.buttons-sub-container')
+let buttons = buttonsContainer.children
 const progBarStatus = document.querySelectorAll('.progress-bar>.progress') // Prog Bar Icons
 const clearButton = document.querySelector('.clear-button')
+const selectionCont = document.querySelector('.selection-container')
+const resultsCont = document.querySelector('.results-sub-container')
 let selectionsArr = [] // Array of selections.
 
-
-//Event listeners
-for (let i = 0; i < button.length; i++) {
-  button[i].addEventListener('click', render)
-}
-clearButton.addEventListener('click', emptyProgBar)
+initialRender()
 
 ///// FUNCTIONS /////
-// Progress bar //
-function render(event) {
-  console.log(event.target.innerHTML + ' clicked!')
-  updateProgBar(event)
+// Render
+function initialRender() {
+  populateButtons()
+  addButtonEventListeners()
+  console.log('initial render complete')
 }
 
+function render(event) {
+  // console.log(event.target.innerHTML + ' clicked!')
+  updateProgBar(event)
+  emptyButtons()
+  populateButtons()
+  addButtonEventListeners()
+}
+
+function clearRender() {
+  emptyProgBar()
+  emptyButtons()
+  populateButtons()
+  addButtonEventListeners()
+  displayButtons()
+}
+
+// Event Listeners
+function addButtonEventListeners() {
+  clearButton.addEventListener('click', clearRender)
+
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', render)
+  }
+}
+
+
+// Progress bar //
 function updateProgBar(event) {
   selectionsArr.push(event.target.innerHTML)
   for (let i = 0; i < progBarStatus.length; i++) {
@@ -44,23 +70,86 @@ function emptyProgBar() {
 }
 
 // Buttons //
-function populateButtons() {
-  // What level am I at?
-  if(selectionsArr.Length===1) {
-    // Meat
-
-  } else if (selectionsArr.Length===2) {
-    // Cut
-  } else if (selectionsArr.Length===3) {
-    // Doneness
-  }
-  for (let i = 0; i<selectionsArr.length; i++) {
-    button.innerHTML = []
+function emptyButtons() {
+  // Clers buttons array
+  const length = buttons.length
+  console.log(buttonsContainer)
+  console.log('Buttons: ' + buttons);
+  for (let i = 0; i < length; i++) {
+    buttonsContainer.removeChild(buttonsContainer.firstElementChild)
   }
 }
 
-function createButton() {
+function populateButtons() {
+  let title
+  const objMap = createObjMap()
+  if (selectionsArr.length === 3) {
+    // Inputting Display text
+    let temp = objMap['temp']
+    let time = objMap['time']
+    document.querySelector('.temp > h3').innerHTML = temp + '°'
+    document.querySelector('.time > h3').innerHTML = time
+    // Hide/unhide containers
+    displayResults()
+  } else {
+    // Create Selection Title
+    document.querySelector('.selection-title h2').innerHTML = title
+
+    // Append Buttons
+    const buttonsArr = Object.keys(objMap)
+    for (let i = 0; i < buttonsArr.length; i++) {
+      document.querySelector('.buttons-sub-container').appendChild(createButton(buttonsArr[i]))
+    }
+  }
+  function createObjMap() {
+    let meat
+    let cut
+    let doneness
+    let result
+    if (selectionsArr.length === 0) {
+      // Meat Buttons
+      result = recipes
+      title = 'MEAT TYPE'
+    }
+    if (selectionsArr.length === 1) {
+      // Cut Buttons
+      meat = selectionsArr[0]
+      result = recipes[meat]
+      title = 'CUT TYPE'
+    }
+    if (selectionsArr.length === 2) {
+      // Doneness Buttons
+      meat = selectionsArr[0]
+      cut = selectionsArr[1]
+      result = recipes[meat][cut]
+      title = 'DONENESS'
+    }
+    if (selectionsArr.length === 3) {
+      // Recipe
+      meat = selectionsArr[0]
+      cut = selectionsArr[1]
+      doneness = selectionsArr[2]
+      result = recipes[meat][cut][doneness]
+    }
+    return result
+  }
+}
+
+function displayResults() {
+  // Hide/Unhide HTML
+  selectionCont.style.display = "none"
+  resultsCont.style.display = "block"
+}
+
+function displayButtons() {
+  // Hide/Unhide HTML
+  selectionCont.style.display = "block"
+  resultsCont.style.display = "none"
+}
+
+function createButton(string) {
   let button = document.createElement('a')
   button.classList.add('button')
-
+  button.innerHTML = string
+  return button
 }

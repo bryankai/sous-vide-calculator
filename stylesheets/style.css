@@ -2,6 +2,9 @@ html {
   /* background-color: AntiqueWhite; */
 }
 
+@import url('http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
+
+
 .header-container {
   display: flex;
   justify-content: center;
@@ -56,8 +59,8 @@ html {
 
 .clear-button.button  {
   max-width: 80px;
-  font-size: 20px;
-  height: 40px;
+  font-size: 16px;
+  max-height: 30px;
 }
 
 
@@ -72,7 +75,7 @@ html {
   padding: 10px 30px;
 }
 
-.title {
+.selection-title {
   /* border-color: #2F404E;
   border-style: solid;
   border-width: 2px; */
@@ -122,6 +125,7 @@ html {
 }
 
 .results-sub-container {
+  display: none;
   max-width: 300px;
   margin: 30px auto;
   min-height: 75px;
@@ -171,6 +175,46 @@ html {
   display: none;
 }
 
+/* Favorite Button */
+
+.favorite.row {
+  display: flex;
+  justify-content: center;
+}
+
+.favorite-btn {
+  width: 160px;
+  height: 50px;
+  background-color: tomato;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #fff;
+}
+.favorite-btn:after, .favorite-btn:before {
+  content: 'Favorite';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transition: all 0.5s;
+  transform: translate(-50%, -50%);
+}
+.favorite-btn:hover:after {
+  top: -50%;
+}
+.favorite-btn:before {
+  font-family: 'Ionicons';
+  content: '\f141';
+  font-size: 40px;
+  top: 190%;
+}
+.favorite-btn:hover:before {
+  top: 50%;
+}
 
 /*****************/
 
