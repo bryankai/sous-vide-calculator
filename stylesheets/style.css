@@ -7,29 +7,47 @@ html {
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: #FFB045;
+  background-color: #FFB755;
 }
 
 .header {
   color: white;
   border-color: white;
   border-style: solid;
-  border-width: 2px;
+  border-width: 3px;
   border-radius: 10px;
   padding: 10px 30px;
   margin: 20px 0px;
 }
-
-.main-container {
-  /* background-color: LightGray; */
+.body-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  height: calc(100vh - 300px);
+}
+
+.footer {
+   position:absolute;
+   bottom:0;
+   height: 100%;
+   width:100%;
+   height:30px;   /* Height of the footer */
+   background:#2F404E;
+   color: white;
 }
 
 .progress-bar {
-  /* background-color: green; */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -40,16 +58,18 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 60px;
   border-style: solid;
-  border-radius: 50%;
-  border-width: 2px;
+  border-radius: 12px;
+  border-width: 3px;
   border-color: #2F404E;
   margin: 0px 10px;
+  font-size: 18px;
+  background-color: LightGray;
 }
 
-.clear-bar {
+.clear-row,.clear-fav-row {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -59,10 +79,23 @@ html {
   max-width: 80px;
   font-size: 16px;
   max-height: 30px;
+  background-color: #FFB755;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 3px;
+  border-color: white;
 }
 
+.clear-button.button:hover {
+  background-color: white;
+  color: #FFB755;
+  border-color: #FFB755;
+}
+
+
 .progress-bar>.complete {
-  background-color: #7EA4CD;
+  color: white;
+  background-color: #2F404E;
 }
 
 .title-container {
@@ -73,7 +106,7 @@ html {
 }
 
 .selection-title, .favorites-title {
-  border-bottom: 2px solid #2F404E;
+  border-bottom: 3px solid #2F404E;
   padding: 0px 20px 0px 20px;
   margin: 10px;
   color: #2F404E
@@ -96,19 +129,21 @@ html {
   width: 150px;
   border-style: solid;
   border-radius: 10px;
-  border-width: 0px;
+  border-width: 3px;
+  border-color: #2F404E;
   margin: 10px 20px;
   display: flex;
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  transition: all .5s ease;
+  transition: all .3s ease;
 }
 
 .button:hover {
-  background-color: black;
-  color: yellow;
+  background-color: white;
+  color: #2F404E;
+  border-color: #2F404E;
 }
 
 @media (max-width:768px) {
@@ -125,8 +160,9 @@ html {
   color: #2F404E;
   border-color: #2F404E;
   border-style: solid;
-  border-width: 2px;
+  border-width: 3px;
   border-radius: 10px;
+  transition: all .5s ease;
   /* background-color: green; */
 }
 
@@ -147,6 +183,7 @@ html {
   border-radius: 10px 10px 0px 0px;
   padding: 20px;
   margin: -1px;
+
   /* border-bottom: 2px solid #2F404E; */
 }
 
@@ -187,7 +224,7 @@ html {
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
-  background-color: #FFB045;
+  background-color: #FFB755;
 }
 
 .favorite-btn:after, .favorite-btn:before {
@@ -220,14 +257,37 @@ html {
 /*** Favorites Sectoin ***/
 /*************************/
 
+.favorites-section {
+  margin: 60px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.clear-fav-button.button {
+  background-color: #FFB755;
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 3px;
+  border-color: white;
+}
+
+.clear-fav-button.button:hover {
+  background-color: white;
+  color: #FFB755;
+  border-color: #FFB755;
+}
+
 table {
+  margin-top: 30px;
   border-collapse: collapse;
   width: 100%;
+  min-width: 150px;
 }
 
 th, td {
-  text-align: left;
+  text-align: center;
   padding: 8px;
+  font-size: 24px;
 }
 
 tr:nth-child(odd) {
@@ -240,12 +300,7 @@ th {
   border-bottom: 1px solid #ddd;
 }
 
-.favorites-section {
-  display: flex;
-  justify-content: center;
-}
-
-.favorites-container {
+td {
   padding: 10px 30px;
 }
 
@@ -256,7 +311,7 @@ th {
 
 h1 {
   font-family: "Open Sans";
-  font-size: 36px;
+  font-size: 44px;
   font-style: normal;
   font-variant: normal;
   font-weight: 500;
@@ -265,7 +320,7 @@ h1 {
 
 h2 {
   font-family: "Open Sans";
-  font-size: 28px;
+  font-size: 32px;
   font-style: normal;
   font-variant: normal;
   font-weight: 500;
@@ -283,7 +338,7 @@ h3 {
 
 p, a {
   font-family: "Open Sans";
-  font-size: 14px;
+  font-size: 18px;
   font-style: normal;
   font-variant: normal;
   font-weight: 400;

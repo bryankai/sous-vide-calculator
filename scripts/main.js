@@ -1,63 +1,73 @@
-//// CONNECTION TESTING /////
-// Linked to HTML?
-// console.log("I'm linked to the HTML file.")
-
-// // Data.js linked?
-// console.log(recipes.beef.steak.rare)
-// var data = require('./data.js');
-
-
-//Initialize variables.
-const buttonsContainer = document.querySelector('.buttons-sub-container')
-let buttons = buttonsContainer.children
-const progBarStatus = document.querySelectorAll('.progress-bar>.progress') // Prog Bar Icons
-const clearButton = document.querySelector('.clear-button')
-const selectionCont = document.querySelector('.selection-container')
-const resultsCont = document.querySelector('.results-sub-container')
-const favesCont = document.querySelector('.favorites-container')
+// Initialize variables.
 let selectionsArr = [] // Array of selections.
-let potentialFav = []
+const favCont = document.querySelector('.favorites-container')
+
+if (JSON.parse(localStorage.getItem('sousVideData'))) {
+  displayFav()
+} else {
+  // If no data in local storage, hide favorites container
+  favCont.style.display = "none"
+}
+let meat
+let cut
+let doneness
+let result
+let temp
+let time
 
 initialRender()
 
 ///// FUNCTIONS /////
-// Render
+/// Render ///
 function initialRender() {
   populateButtons()
   addButtonEventListeners()
-  console.log('Initial render complete.')
 }
 
 function render(event) {
-  // console.log(event.target.innerHTML + ' clicked!')
+  const buttonsContainer = document.querySelector('.buttons-sub-container')
   updateProgBar(event)
-  emptyButtons()
+  empty(buttonsContainer)
   populateButtons()
   addButtonEventListeners()
 }
 
 function clearRender() {
+  const buttonsContainer = document.querySelector('.buttons-sub-container')
   emptyProgBar()
-  emptyButtons()
+  empty(buttonsContainer)
   populateButtons()
   addButtonEventListeners()
   displayButtons()
 }
 
-// Event Listeners
-function addButtonEventListeners() {
-  clearButton.addEventListener('click', clearRender)
-
-  document.querySelector('.favorite-btn').addEventListener('click',saveFavorite)
-
-  for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', render)
+/// EMPTY ///
+function empty(container) {
+  // Clers div
+  const children = container.children
+  const length = children.length
+  for (let i = 0; i < length; i++) {
+    container.removeChild(container.firstElementChild)
   }
 }
 
 
-// Progress bar //
+// Event Listeners
+function addButtonEventListeners() {
+  const clearButton = document.querySelector('.clear-button')
+  const buttons = document.querySelector('.buttons-sub-container').children
+  clearButton.addEventListener('click', clearRender)
+  document.querySelector('.favorite-btn').addEventListener('click', saveFavorite)
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', render)
+  }
+  document.querySelector('.clear-fav-button').addEventListener('click',clearFav)
+}
+
+
+/// Progress bar ///
 function updateProgBar(event) {
+  const progBarStatus = document.querySelectorAll('.progress-bar>.progress')
   selectionsArr.push(event.target.innerHTML)
   for (let i = 0; i < progBarStatus.length; i++) {
     if (selectionsArr[i]) {
@@ -67,29 +77,22 @@ function updateProgBar(event) {
 }
 
 function emptyProgBar() {
+  const progBarStatus = document.querySelectorAll('.progress-bar>.progress')
   selectionsArr = []
   for (let i = 0; i < progBarStatus.length; i++) {
     progBarStatus[i].classList.remove("complete")
   }
 }
 
-// Buttons //
-function emptyButtons() {
-  // Clers buttons array
-  const length = buttons.length
-  for (let i = 0; i < length; i++) {
-    buttonsContainer.removeChild(buttonsContainer.firstElementChild)
-  }
-}
-
+/// Buttons ///
 function populateButtons() {
   let title
   let recipeName
   const objMap = createObjMap()
   if (selectionsArr.length === 3) {
     // Inputting Display text
-    let temp = objMap['temp']
-    let time = objMap['time']
+    temp = objMap['temp']
+    time = objMap['time']
     document.querySelector('.temp > h3').innerHTML = temp + '°'
     document.querySelector('.time > h3').innerHTML = time
     document.querySelector('.results-title > h2').innerHTML = recipeName
@@ -105,11 +108,8 @@ function populateButtons() {
       document.querySelector('.buttons-sub-container').appendChild(createButton(buttonsArr[i]))
     }
   }
+
   function createObjMap() {
-    let meat
-    let cut
-    let doneness
-    let result
     if (selectionsArr.length === 0) {
       // Meat Buttons
       result = recipes
@@ -134,8 +134,8 @@ function populateButtons() {
       cut = selectionsArr[1]
       doneness = selectionsArr[2]
       result = recipes[meat][cut][doneness]
-      potentialFav = [meat,cut,doneness]
-      recipeName = cut+' // '+doneness
+      potentialFav = [meat, cut, doneness]
+      recipeName = cut + ' // ' + doneness
     }
     return result
   }
@@ -143,12 +143,16 @@ function populateButtons() {
 
 // Hide/Unhide HTML
 function displayResults() {
+  const selectionCont = document.querySelector('.selection-container')
+  const resultsCont = document.querySelector('.results-sub-container')
   selectionCont.style.display = "none"
   resultsCont.style.display = "block"
 }
 
 // Hide/Unhide HTML
 function displayButtons() {
+  const selectionCont = document.querySelector('.selection-container')
+  const resultsCont = document.querySelector('.results-sub-container')
   selectionCont.style.display = "block"
   resultsCont.style.display = "none"
 }
@@ -160,15 +164,48 @@ function createButton(string) {
   return button
 }
 
-//Favorite
-function saveFavorite () {
-  localStorage.setItem('myFavs', potentialFav);
+///// FAVORITES /////
+function saveFavorite() {
+  let favArr = JSON.parse(localStorage.getItem('sousVideData')) || []
+  favArr.push({
+    'meat': meat,
+    'cut': cut,
+    'doneness': doneness,
+    'temp': temp,
+    'time': time
+  })
+  localStorage.setItem('sousVideData', JSON.stringify(favArr));
+  displayFav()
 }
 
-function displayFavorites () {
-  let myFavs = localStorage.getItem("myFavs")
-  if (myFavs) {
+function displayFav() {
+  const favCont = document.querySelector('.favorites-container')
+  let parsed = JSON.parse(localStorage.getItem('sousVideData'))
+  let favArr = parsed ? parsed : [];
+  let favTable = document.getElementById('favTable')
+  empty(favTable)
+  updateFavTable()
+  favCont.style.display = "block"
 
-      favesCont.style.display = "block"
+  function updateFavTable() {
+    for (let i = 0; i < favArr.length; i++) {
+      favTable.appendChild(createFavoriteRow(favArr[i]))
+    }
+    function createFavoriteRow(favObj) {
+      let row = document.createElement('tr');
+      for (let key in favObj) {
+        let td = document.createElement('td')
+        td.innerHTML = favObj[key]
+        row.appendChild(td)
+      }
+      return row
+    }
   }
+}
+
+function clearFav() {
+  console.log('clearFav')
+  localStorage.removeItem('sousVideData')
+  displayFav()
+  favCont.style.display = "none"
 }
