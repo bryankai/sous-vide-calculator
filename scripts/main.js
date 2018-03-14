@@ -181,20 +181,7 @@ function saveFavorite() {
     console.log('dont push');
   }
   function duplicateFav (arr) {
-    arr
-    if(arr.meat==meat) {
-      console.log('meat matches');
-      if(arr.cut==cut) {
-        console.log(cut)
-        console.log('cut matches')
-        if(arr.doneness==doneness) {
-          console.log('fav matches')
-          return true
-        }
-      }
-    }
-    console.log('returned false')
-    return false
+    return arr.meat==meat&&arr.cut==cut&&arr.doneness==doneness
   }
   localStorage.setItem('sousVideData', JSON.stringify(favArr));
   displayFav()
