@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Sous Vide Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="stylesheets/style.css">
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
   <link defer rel="stylesheet" type="text/css" href="//use.fontawesome.com/releases/v5.0.8/css/all.css">
@@ -20,6 +21,8 @@
   </div>
   <div class="body-container">
     <div class="main-container">
+      
+      <!-- Progress Bar -->
       <div class="progress-bar">
         <div class="progress meat">MEAT
         </div>
@@ -31,6 +34,8 @@
       <div class="clear-row">
         <a class="clear-button button">CLEAR</a>
       </div>
+
+      <!-- Selection/Buttons -->
       <div class="selection-container">
         <div class="title-container">
           <div class="selection-title">
@@ -42,6 +47,7 @@
           </div>
         </div>
       </div>
+      <!-- Results -->
       <div clas="results-container">
         <div class="results-sub-container">
           <div class="results-title row">
@@ -69,6 +75,8 @@
           </div>
         </div>
       </div>
+
+      <!-- Favorites  -->
       <div class="favorites-section">
         <div class="favorites-title-container">
           <div class="favorites-title">
@@ -84,7 +92,7 @@
                 <th>Doneness</th>
                 <th>Temp (°F)</th>
                 <th>Time</th>
-                <th></th>
+                <!-- <th></th> -->
               </tr>
             </thead>
             <tbody id="favTable">

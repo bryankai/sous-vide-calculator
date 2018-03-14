@@ -209,14 +209,14 @@ function displayFav() {
         row.appendChild(td)
       }
       // Create and append 'Delete Fav' button
-      let td = document.createElement('td')
-      let icon = document.createElement('i')
-      icon.classList.add('fas')
-      icon.classList.add('fa-trash-alt')
-      icon.classList.add('delete-icon')
-      td.appendChild(icon)
-      row.appendChild(td)
-      td.addEventListener('click',deleteFavRow)
+      // let td = document.createElement('td')
+      // let icon = document.createElement('i')
+      // icon.classList.add('fas')
+      // icon.classList.add('fa-trash-alt')
+      // icon.classList.add('delete-icon')
+      // td.appendChild(icon)
+      // row.appendChild(td)
+      // td.addEventListener('click',deleteFavRow)
       return row
     }
   }

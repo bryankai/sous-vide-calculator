@@ -20,8 +20,9 @@ body {
   border-style: solid;
   border-width: 3px;
   border-radius: 10px;
-  padding: 10px 30px;
-  margin: 20px 0px;
+  padding: 0 20px;
+  margin: 10px 10px;
+  text-align: center;
 }
 
 .main-container {
@@ -75,11 +76,16 @@ a:link, a:visited {
 }
 
 .progress-bar {
-  /* background-color: green; */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   padding: 20px 20px 0 20px;
+}
+
+@media (max-width: 600px) {
+  .progress-bar {
+    display: none;
+  }
 }
 
 .progress {
@@ -95,6 +101,13 @@ a:link, a:visited {
   margin: 0px 10px;
   font-size: 18px;
   background-color: LightGray;
+}
+
+
+
+.progress-bar>.complete {
+  color: white;
+  background-color: #2F404E;
 }
 
 .clear-row, .clear-fav-row {
@@ -120,21 +133,16 @@ a:link, a:visited {
   border-color: #FFB755;
 }
 
-.progress-bar>.complete {
-  color: white;
-  background-color: #2F404E;
-}
-
 .title-container, .favorites-title-container {
   display: flex;
   justify-content: center;
-  padding: 10px 30px;
+  padding: 0px 30px 10px 30px;
 }
 
 .selection-title, .favorites-title {
   border-bottom: 3px solid #2F404E;
   padding: 0px 20px 0px 20px;
-  margin: 10px;
+  margin: 0 10px;
   color: #2F404E
 }
 
@@ -280,7 +288,7 @@ a:link, a:visited {
 /*************************/
 
 .favorites-section {
-  margin: 60px 5%;
+  margin: 50px 5%;
   display: flex;
   justify-content: center;
 }
@@ -363,6 +371,9 @@ td {
   .footer-container {
     display: none;
   }
+  .header h3 {
+    display: none;
+  }
 }
 
 /*****************/
@@ -377,7 +388,13 @@ h1 {
   font-style: normal;
   font-variant: normal;
   font-weight: 500;
-  line-height: 26.4px;
+  line-height: 44px;
+}
+
+@media max-width(600px) {
+  h1 {
+    font-size: 36px;
+  }
 }
 
 h2 {
@@ -386,7 +403,7 @@ h2 {
   font-style: normal;
   font-variant: normal;
   font-weight: 500;
-  line-height: 26.4px;
+  line-height: 32px;
 }
 
 h3 {
@@ -395,7 +412,7 @@ h3 {
   font-style: normal;
   font-variant: normal;
   font-weight: 500;
-  line-height: 15.4px;
+  line-height: 24px;
 }
 
 p, a {
