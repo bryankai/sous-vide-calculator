@@ -1,6 +1,6 @@
 @import url('https://use.fontawesome.com/releases/v5.0.8/css/all.css');
 html {
-    font-family: "Open Sans";
+  font-family: "Open Sans";
 }
 
 .header-container {
@@ -19,12 +19,12 @@ html {
   padding: 10px 30px;
   margin: 20px 0px;
 }
+
 .body-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-
 }
 
 .main-container {
@@ -37,17 +37,48 @@ html {
   height: calc(100vh - 200px);
 }
 
-.footer {
-   position:absolute;
-   bottom:0;
-   height: 100%;
-   width:100%;
-   height:30px;   /* Height of the footer */
-   background:#2F404E;
-   color: white;
+/**************/
+/*** Footer ***/
+/**************/
+
+.footer-container {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  height: 50px;
+  background: #2F404E;
+  color: white;
+  font-size: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-text {
+  margin: 5px 20px 5px 40px;
+}
+
+.contact-icons {
+  display: flex;
+  margin: 5px 40px 5px 20px;
+}
+
+.contact-icons .icon{
+  margin: 0 5px;
+  font-size: 28px;
+}
+
+a:link,a:visited {
+  color: white;
+}
+
+.contact-icons .icon:hover {
+  color: LightGray;
 }
 
 .progress-bar {
+  background-color: green;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -69,7 +100,7 @@ html {
   background-color: LightGray;
 }
 
-.clear-row,.clear-fav-row {
+.clear-row, .clear-fav-row {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -92,14 +123,12 @@ html {
   border-color: #FFB755;
 }
 
-
 .progress-bar>.complete {
   color: white;
   background-color: #2F404E;
 }
 
 .title-container {
-  /* background-color: blue; */
   display: flex;
   justify-content: center;
   padding: 10px 30px;
@@ -163,7 +192,6 @@ html {
   border-width: 3px;
   border-radius: 10px;
   transition: all .5s ease;
-  /* background-color: green; */
 }
 
 .results-sub-container .row {
@@ -183,7 +211,6 @@ html {
   border-radius: 10px 10px 0px 0px;
   padding: 20px;
   margin: -1px;
-
   /* border-bottom: 2px solid #2F404E; */
 }
 
@@ -206,7 +233,9 @@ html {
 }
 
 /*************************/
+
 /**** Favorite Button ****/
+
 /*************************/
 
 .favorite.row {
@@ -254,7 +283,9 @@ html {
 }
 
 /*************************/
+
 /*** Favorites Sectoin ***/
+
 /*************************/
 
 .favorites-section {
@@ -302,11 +333,13 @@ th {
 
 td {
   padding: 10px 30px;
+  color: #2F404E;
 }
 
-
 /*****************/
+
 /*** Open Sans ***/
+
 /*****************/
 
 h1 {

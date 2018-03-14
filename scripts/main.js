@@ -61,7 +61,7 @@ function addButtonEventListeners() {
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', render)
   }
-  document.querySelector('.clear-fav-button').addEventListener('click',clearFav)
+  document.querySelector('.clear-fav-button').addEventListener('click', clearFav)
 }
 
 
@@ -167,13 +167,35 @@ function createButton(string) {
 ///// FAVORITES /////
 function saveFavorite() {
   let favArr = JSON.parse(localStorage.getItem('sousVideData')) || []
-  favArr.push({
-    'meat': meat,
-    'cut': cut,
-    'doneness': doneness,
-    'temp': temp,
-    'time': time
-  })
+  console.log(favArr)
+  if(!favArr.some(duplicateFav)) {
+    // If favorite is not a duplicate, add the fav.
+    favArr.push({
+      'meat': meat,
+      'cut': cut,
+      'doneness': doneness,
+      'temp': temp,
+      'time': time
+    })
+  } else {
+    console.log('dont push');
+  }
+  function duplicateFav (arr) {
+    arr
+    if(arr.meat==meat) {
+      console.log('meat matches');
+      if(arr.cut==cut) {
+        console.log(cut)
+        console.log('cut matches')
+        if(arr.doneness==doneness) {
+          console.log('fav matches')
+          return true
+        }
+      }
+    }
+    console.log('returned false')
+    return false
+  }
   localStorage.setItem('sousVideData', JSON.stringify(favArr));
   displayFav()
 }
@@ -191,6 +213,7 @@ function displayFav() {
     for (let i = 0; i < favArr.length; i++) {
       favTable.appendChild(createFavoriteRow(favArr[i]))
     }
+
     function createFavoriteRow(favObj) {
       let row = document.createElement('tr');
       for (let key in favObj) {
@@ -198,9 +221,22 @@ function displayFav() {
         td.innerHTML = favObj[key]
         row.appendChild(td)
       }
+      // Create and append 'Delete Fav' button
+      let td = document.createElement('td')
+      let icon = document.createElement('i')
+      icon.classList.add('fas')
+      icon.classList.add('fa-trash')
+      td.appendChild(icon)
+      row.appendChild(td)
+      td.addEventListener('click',deleteFavRow)
       return row
     }
   }
+}
+
+function deleteFavRow(event) {
+  // event.this
+  console.log('delete individual favorite')
 }
 
 function clearFav() {
