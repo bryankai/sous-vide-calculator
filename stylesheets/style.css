@@ -3,6 +3,10 @@ html {
   font-family: "Open Sans";
 }
 
+body {
+  margin: 0 0 0 0;
+}
+
 .header-container {
   display: flex;
   justify-content: center;
@@ -20,25 +24,17 @@ html {
   margin: 20px 0px;
 }
 
-.body-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
 .main-container {
-  display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  align-items: center;
-  align-content: center;
   height: calc(100vh - 200px);
 }
 
 /**************/
+
 /*** Footer ***/
+
 /**************/
 
 .footer-container {
@@ -50,9 +46,10 @@ html {
   height: 50px;
   background: #2F404E;
   color: white;
-  font-size: 20px;
+  font-size: 1.5rem;
   justify-content: space-between;
   align-items: center;
+  transition: all .3s ease;
 }
 
 .footer-text {
@@ -64,12 +61,12 @@ html {
   margin: 5px 40px 5px 20px;
 }
 
-.contact-icons .icon{
+.contact-icons .icon {
   margin: 0 5px;
-  font-size: 28px;
+  font-size: 2rem;
 }
 
-a:link,a:visited {
+a:link, a:visited {
   color: white;
 }
 
@@ -78,7 +75,7 @@ a:link,a:visited {
 }
 
 .progress-bar {
-  background-color: green;
+  /* background-color: green; */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -92,7 +89,7 @@ a:link,a:visited {
   height: 30px;
   width: 60px;
   border-style: solid;
-  border-radius: 12px;
+  border-radius: 10px;
   border-width: 3px;
   border-color: #2F404E;
   margin: 0px 10px;
@@ -109,7 +106,7 @@ a:link,a:visited {
 .clear-button.button {
   max-width: 80px;
   font-size: 16px;
-  max-height: 30px;
+  max-height: 35px;
   background-color: #FFB755;
   border-style: solid;
   border-radius: 10px;
@@ -128,7 +125,7 @@ a:link,a:visited {
   background-color: #2F404E;
 }
 
-.title-container {
+.title-container, .favorites-title-container {
   display: flex;
   justify-content: center;
   padding: 10px 30px;
@@ -173,12 +170,6 @@ a:link,a:visited {
   background-color: white;
   color: #2F404E;
   border-color: #2F404E;
-}
-
-@media (max-width:768px) {
-  .button {
-    width: 100%;
-  }
 }
 
 .results-sub-container {
@@ -250,7 +241,7 @@ a:link,a:visited {
   color: white;
   background-color: tomato;
   position: relative;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
   background-color: #FFB755;
@@ -289,9 +280,13 @@ a:link,a:visited {
 /*************************/
 
 .favorites-section {
-  margin: 60px 0;
+  margin: 60px 5%;
   display: flex;
   justify-content: center;
+}
+
+.clear-fav-row {
+  /* max-width: 500px; */
 }
 
 .clear-fav-button.button {
@@ -300,6 +295,7 @@ a:link,a:visited {
   border-radius: 10px;
   border-width: 3px;
   border-color: white;
+  padding: 0 10px;
 }
 
 .clear-fav-button.button:hover {
@@ -308,15 +304,39 @@ a:link,a:visited {
   border-color: #FFB755;
 }
 
+.delete-icon {
+  font-size: 24px;
+}
+
 table {
   margin-top: 30px;
   border-collapse: collapse;
   width: 100%;
-  min-width: 150px;
+  min-width: 120px;
 }
+
+/* Rounded Borders */
+th:first-child {
+  border-radius: 10px 0 0 0;
+  border-left: none
+}
+th:last-child {
+  border-radius: 0 10px 0 0;
+  border-right: none
+}
+tr:last-child>td:last-child {
+  border-radius: 0 0 10px 0;
+}
+tr:last-child>td:first-child {
+  border-radius: 0 0 0 10px;
+}
+
+
+
 
 th, td {
   text-align: center;
+  vertical-align: middle;
   padding: 8px;
   font-size: 24px;
 }
@@ -334,6 +354,15 @@ th {
 td {
   padding: 10px 30px;
   color: #2F404E;
+}
+
+@media (max-width: 600px) {
+  .button {
+    width: 100%;
+  }
+  .footer-container {
+    display: none;
+  }
 }
 
 /*****************/

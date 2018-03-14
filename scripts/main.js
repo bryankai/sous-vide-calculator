@@ -1,12 +1,12 @@
 // Initialize variables.
 let selectionsArr = [] // Array of selections.
-const favCont = document.querySelector('.favorites-container')
+const favSection = document.querySelector('.favorites-section')
 
 if (JSON.parse(localStorage.getItem('sousVideData'))) {
   displayFav()
 } else {
   // If no data in local storage, hide favorites container
-  favCont.style.display = "none"
+  favSection.style.display = "none"
 }
 let meat
 let cut
@@ -188,13 +188,13 @@ function saveFavorite() {
 }
 
 function displayFav() {
-  const favCont = document.querySelector('.favorites-container')
+  const favSection = document.querySelector('.favorites-section')
   let parsed = JSON.parse(localStorage.getItem('sousVideData'))
   let favArr = parsed ? parsed : [];
   let favTable = document.getElementById('favTable')
   empty(favTable)
   updateFavTable()
-  favCont.style.display = "block"
+  favSection.style.display = "block"
 
   function updateFavTable() {
     for (let i = 0; i < favArr.length; i++) {
@@ -212,7 +212,8 @@ function displayFav() {
       let td = document.createElement('td')
       let icon = document.createElement('i')
       icon.classList.add('fas')
-      icon.classList.add('fa-trash')
+      icon.classList.add('fa-trash-alt')
+      icon.classList.add('delete-icon')
       td.appendChild(icon)
       row.appendChild(td)
       td.addEventListener('click',deleteFavRow)
@@ -230,5 +231,5 @@ function clearFav() {
   console.log('clearFav')
   localStorage.removeItem('sousVideData')
   displayFav()
-  favCont.style.display = "none"
+  favSection.style.display = "none"
 }
