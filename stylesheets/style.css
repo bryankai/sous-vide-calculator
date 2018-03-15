@@ -212,7 +212,7 @@ a:link, a:visited {
 .results-sub-container {
   display: none;
   max-width: 300px;
-  margin: 30px auto;
+  margin: 30px auto 50px auto;
   min-height: 75px;
   color: #2F404E;
   border-color: #2F404E;
