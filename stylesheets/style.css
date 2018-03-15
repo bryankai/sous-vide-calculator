@@ -11,7 +11,24 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: #FFB755;
+  background: url('../images/steak.jpg');
+  background-size: cover;
+  background-position: 50%;
+}
+
+@media (max-width: 600px) {
+  .header-container {
+    background: none;
+    background-color: #FFB755;
+  }
+}
+
+@media (min-width: 600px) {
+  .overlay {
+    background-color: rgba(0, 0, 0, .4);
+    /* Black with 0.5 opacity */
+    width: 100%;
+  }
 }
 
 .header {
@@ -21,7 +38,7 @@ body {
   border-width: 3px;
   border-radius: 10px;
   padding: 0 20px;
-  margin: 10px 10px;
+  margin: 15px 15px;
   text-align: center;
 }
 
@@ -103,8 +120,6 @@ a:link, a:visited {
   background-color: LightGray;
 }
 
-
-
 .progress-bar>.complete {
   color: white;
   background-color: #2F404E;
@@ -156,7 +171,7 @@ a:link, a:visited {
 
 .button {
   color: white;
-  font-size: 20px;
+  font-size: 24px;
   background-color: #2F404E;
   cursor: pointer;
   height: 50px;
@@ -194,9 +209,6 @@ a:link, a:visited {
 }
 
 .results-sub-container .row {
-  /* border-color: yellow;
-  border-style: solid;
-  border-width: 2px; */
   display: flex;
   display: wrap;
   align-items: center;
@@ -288,13 +300,17 @@ a:link, a:visited {
 /*************************/
 
 .favorites-section {
-  margin: 50px 5%;
+  margin: 40px 5%;
   display: flex;
   justify-content: center;
 }
 
 .clear-fav-row {
   /* max-width: 500px; */
+}
+
+.favorites-title-container {
+  margin-bottom: 15px;
 }
 
 .clear-fav-button.button {
@@ -304,6 +320,9 @@ a:link, a:visited {
   border-width: 3px;
   border-color: white;
   padding: 0 10px;
+  max-width: 120px;
+  font-size: 16px;
+  max-height: 35px;
 }
 
 .clear-fav-button.button:hover {
@@ -316,53 +335,69 @@ a:link, a:visited {
   font-size: 24px;
 }
 
+.favorites-table {
+  display: flex;
+  justify-content: center;
+}
+
 table {
-  margin-top: 30px;
-  border-collapse: collapse;
-  width: 100%;
+  width: 80%;
   min-width: 120px;
+  max-width: 1000px;
+  margin: -1;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: .8rem;
+  border-color: #2F404E;
+  border-collapse: separate;
 }
 
 /* Rounded Borders */
-th:first-child {
-  border-radius: 10px 0 0 0;
-  border-left: none
-}
-th:last-child {
-  border-radius: 0 10px 0 0;
-  border-right: none
-}
-tr:last-child>td:last-child {
-  border-radius: 0 0 10px 0;
-}
-tr:last-child>td:first-child {
-  border-radius: 0 0 0 10px;
-}
-
-
-
-
 th, td {
   text-align: center;
   vertical-align: middle;
-  padding: 8px;
-  font-size: 24px;
-}
-
-tr:nth-child(odd) {
-  background-color: LightGray;
+  padding: 8px 10px;
+  font-size: 20px;
 }
 
 th {
   background-color: #2F404E;
   color: white;
-  border-bottom: 1px solid #ddd;
 }
 
 td {
-  padding: 10px 30px;
   color: #2F404E;
+  /* border-color: black;
+  border-style: solid;
+  border-width: 2px; */
 }
+
+th:first-child {
+  border-radius: 0.6rem 0 0 0;
+  border-left: none
+}
+
+th:last-child {
+  border-radius: 0 0.6rem 0 0;
+  border-right: none
+}
+
+tr:last-child>td:last-child {
+  border-right: none;
+  border-radius: 0 0 .6rem 0;
+}
+
+tr:last-child>td:first-child {
+  border-radius: 0 0 0 0.6rem;
+}
+
+
+
+tr:nth-child(odd) {
+  background-color: LightGray;
+}
+
+
 
 @media (max-width: 600px) {
   .button {
@@ -374,6 +409,15 @@ td {
   .header h3 {
     display: none;
   }
+  table {
+    width: 100%
+  }
+
+  th, td {
+    padding: 4px 5px;
+    font-size: 16px;
+  }
+
 }
 
 /*****************/
