@@ -1,4 +1,4 @@
-@import url('https://use.fontawesome.com/releases/v5.0.8/css/all.css');
+/* @import url('https://use.fontawesome.com/releases/v5.0.8/css/all.css'); */
 html {
   font-family: "Open Sans";
 }
@@ -103,7 +103,7 @@ a:link, a:visited {
 /**************/
 
 .body-container {
-  margin: 180px 0 0 0;
+  margin: 200px 0 0 0;
 }
 
 .progress-bar {
@@ -258,9 +258,7 @@ a:link, a:visited {
 }
 
 /*************************/
-
 /**** Favorite Button ****/
-
 /*************************/
 
 .favorite.row {
@@ -297,9 +295,10 @@ a:link, a:visited {
 }
 
 .favorite-btn:before {
-  font-family: "FontAwesome";
+  font-family: "Font Awesome 5 Free";
   content: "\f004";
-  font-size: 40px;
+  font-weight: 900;
+  font-size: 24px;
   top: 190%;
 }
 
