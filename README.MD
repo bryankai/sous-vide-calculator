@@ -20,9 +20,5 @@ Time: 1 hour
 * Deployed via Surge
 * Created in one week
 
-#### Inspiration
-https://www.sousvidetools.com/calculator/  
-<img src="https://image.ibb.co/kANK7n/sous_vide_calculator.png" alt="SousVideTools-screenshot" width="250"/>
-
 ## Author
 * **Bryan Kai** - *Initial work* - [bryankai](https://github.com/bryankai)
