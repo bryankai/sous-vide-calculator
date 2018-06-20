@@ -1,6 +1,6 @@
 # Sous Vide Calculator
 <img src="https://image.ibb.co/nJj4Mc/sous_vide.png" alt="sous-vide-calculator-screenshot" width="400"/>  
-http://sousvide.surge.sh/
+http://sous-vide.surge.sh/
 
 ## Purpose
 I love a nice juicy steak with a perfectly seared crust and cooked medium-rare evenly through.  To do that, I use my sous vide, but I often forget what temperature to set my sous vide at and how long it’ll take to cook.  That’s where the Sous Vide Calculator comes in!
